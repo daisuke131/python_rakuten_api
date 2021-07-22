@@ -1,9 +1,13 @@
 import os
 from datetime import datetime
+from pathlib import Path
 
 import pandas as pd
 
 from common import execute_api
+
+dir = Path(os.path.join(os.getcwd(), "csv"))
+dir.mkdir(parents=True, exist_ok=True)
 
 RAKUTEN_ITEM_SEARCH_URL = (
     "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20170706"
