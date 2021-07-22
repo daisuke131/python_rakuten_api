@@ -13,7 +13,6 @@ RAKUTEN_RANKING_URL = (
     "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?"
 )
 APP_ID = "1019079537947262807"
-
 WRITE_CSV_PATH = os.path.join(os.getcwd(), "csv/info_{genere_id}_{datetime}.csv")
 
 

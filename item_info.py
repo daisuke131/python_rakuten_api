@@ -9,22 +9,20 @@ from common import execute_api
 dir = Path(os.path.join(os.getcwd(), "csv"))
 dir.mkdir(parents=True, exist_ok=True)
 
-RAKUTEN_ITEM_SEARCH_URL = (
+RAKUTEN_ITEM_INFO_URL = (
     "https://app.rakuten.co.jp/services/api/Product/Search/20170426?"
 )
 APP_ID = "1019079537947262807"
-
 WRITE_CSV_PATH = os.path.join(os.getcwd(), "csv/info_{keyword}_{datetime}.csv")
 
 
 def item_info(keyword: str, is_csv_output: bool):
-    url = RAKUTEN_ITEM_SEARCH_URL
     params = {
         "applicationId": APP_ID,
         "format": "json",
         "keyword": keyword,
     }
-    result = execute_api(url, params)
+    result = execute_api(RAKUTEN_ITEM_INFO_URL, params)
     if is_csv_output:
         df = pd.DataFrame()
         for product in result["Products"]:
