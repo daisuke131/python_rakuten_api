@@ -31,3 +31,14 @@ def test_search_items():
     assert item_details["shopCode"]
     assert item_details["shopName"]
     assert item_details["itemUrl"]
+
+
+def test_item_info():
+    result = item_info(KEYWORD)
+    product_details = result["Products"][0]["Product"]
+
+    assert len(result["Products"]) >= 1
+    assert product_details["productName"]
+    assert product_details["maxPrice"]
+    assert product_details["minPrice"]
+    assert product_details["productUrlPC"]
