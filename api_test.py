@@ -1,4 +1,5 @@
 from common import execute_api
+from search_item import search_items
 
 
 def test_execute_api():
@@ -11,3 +12,14 @@ def test_execute_api():
     result = execute_api(url, params)
 
     assert len(result["Items"]) >= 1
+    assert result["Items"][0]["Item"]["itemCode"]
+
+
+def test_search_items():
+    keyword = "PS5"
+    result = search_items(keyword)
+
+    assert len(result["Items"]) >= 1
+    assert result["Items"][0]["Item"]["itemCode"]
+    assert result["Items"][0]["Item"]["itemName"]
+    assert result["Items"][0]["Item"]["itemPrice"]
