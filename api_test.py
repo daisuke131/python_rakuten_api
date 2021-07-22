@@ -5,6 +5,7 @@ from search_item import search_items
 APP_ID = "1019079537947262807"
 FORMAT = "json"
 KEYWORD = "PS5"
+IS_CSV_OUTPUT = False
 
 
 def test_execute_api():
@@ -21,7 +22,7 @@ def test_execute_api():
 
 
 def test_search_items():
-    result = search_items(KEYWORD)
+    result = search_items(KEYWORD, IS_CSV_OUTPUT)
     item_details = result["Items"][0]["Item"]
 
     assert len(result["Items"]) >= 1
@@ -34,7 +35,7 @@ def test_search_items():
 
 
 def test_item_info():
-    result = item_info(KEYWORD)
+    result = item_info(KEYWORD, IS_CSV_OUTPUT)
     product_details = result["Products"][0]["Product"]
 
     assert len(result["Products"]) >= 1
